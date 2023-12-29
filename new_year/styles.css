@@ -1,0 +1,93 @@
+body {
+    background-color: #FFF4DE;
+    margin: 0px;
+}
+
+.hnyear {
+    text-align: center;
+    font-family: 'Unbounded', sans-serif;
+    color: #CF0000;
+    font-size: 100px;
+    margin: 50px;
+}
+
+.rect {
+    background-color: #CF0000;
+    height: 350px;
+    width: 40%;
+}
+
+.krug {
+    background-color: #CF0000;
+    height: 350px;
+    width: 350px;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    position: relative;
+}
+
+.box {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 50%;
+    height: 350px;
+}
+
+.sleva {
+    float: left;
+}
+
+.sprava {
+    float: right;
+}
+
+
+.bigbox {
+    height: 350px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+} 
+
+.text {
+    text-align: center;
+    width: 40%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: 'Unbounded', sans-serif;
+    color: #CF0000;
+    font-size: 25px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+img {
+    display: block;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 250px
+}
+
+.no_sprava {
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 0%;
+    border-bottom-right-radius: 0%;
+}
+
+.fotka {
+    position: relative;
+    margin: 150px;
+    height: 350px;
+}
+
+.fotka img {
+    border-radius: 50%;
+    border-style: solid;
+    border-color: #CF0000;
+    border-width: 5px;
+    width: 300px;
+}
