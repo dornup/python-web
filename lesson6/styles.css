@@ -1,0 +1,13 @@
+.krasivo {
+    background-color: rebeccapurple;
+    color: blue;
+    border: black 3px dotted;
+}
+
+.krasivo:hover {
+    border-color: aliceblue;
+}
+nav p {
+    display: inline-block;
+    margin: 0 50px;
+}
