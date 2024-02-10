@@ -1,0 +1,43 @@
+/* Общие настройки */
+:root {
+    --dark_bg: #434149;
+    --dark_text: #dbd4b6;
+}
+
+
+body {
+    background-color: var(--dark_bg);
+    margin: 0;
+}
+
+h1, h2, h3, p {
+    color: var(--dark_text);
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: italic;
+}
+
+/* Оформление */
+
+section#welcome {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+
+    /* Для фоновых логотипов */
+    position: relative;
+}
+
+/* Фоновые логотипы */
+section#welcome .bg_logo img {
+        width: 75px;
+        position: absolute;
+        z-index: -1;
+        left: 50px;
+
+        /* Инверсия цветов */
+        filter: invert(95%); 
+}
