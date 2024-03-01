@@ -1,16 +1,22 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_bootstrap import Bootstrap
-from forms import RegisterForm
-from flask_login import UserMixin
+from forms import RegisterForm, LoginForm
+from flask_login import UserMixin, LoginManager, login_user, logout_user, current_user
 import os
 from flask_sqlalchemy import SQLAlchemy
-SECRET_KEY = os.urandom(32) #генерация уникальной последовательности из 32 байтов
+SECRET_KEY = os.urandom(32) #генерация уникальной последовательности из 32 байто
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 Bootstrap(app)
 
+#логин система
+login_manager = LoginManager()
+login_manager.init_app(app)
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
 # подключение бд
 db_path = os.path.join(os.path.dirname(__file__), "users.db") #  путь до файла с бд 
@@ -25,6 +31,7 @@ class User(UserMixin, db.Model):
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     login = db.Column(db.String(250), unique=True, nullable=False)
+    name = db.Column(db.String(250), unique=False, nullable=False)
     password = db.Column(db.String(250), nullable=False)
 
 db.create_all()    
@@ -36,19 +43,40 @@ def index():
         if form.validate_on_submit(): #валидация (если форма сказала, что все окей)
             if User.query.filter_by(login=request.form.get('login')).first(): # если пользователь уже занят: почта занята
                 print('ЛОГИН ЕСТЬ')
+                return redirect(url_for('login'))
             else:  # иначе: хэшируем пароль, создать пользователя в бд, авторизация
                 # определяем нового пользователя
                 new_user = User(
                     login = request.form.get('login').lower() ,
+                    name = request.form.get('name').capitalize() ,
                     password = request.form.get('password')
                 )
                 # заносим запись в бд
                 db.session.add(new_user)
                 db.session.commit()
+
+                login_user(new_user)
+                return redirect(url_for('home'))
+
     return render_template('index.html', form=form)
 
-# @app.route("/about")
-# def about_f():
-#     return render_template('bimbam.html')
+@app.route("/home")
+def home():
+    return render_template('page.html')
+
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if request.method == 'POST':
+        login = request.form.get('login').lower()
+        password = request.form.get('password')
+        user = User.query.filter_by(login=login).first()
+        if not user:
+            return redirect(url_for('index'))
+        # не хватает проверки пароля
+        else:
+            login_user(user)
+            return redirect(url_for('home'))
+    return render_template('login.html', form=form)
 
 app.run(debug=True)
