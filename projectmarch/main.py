@@ -4,6 +4,7 @@ from forms import RegisterForm, LoginForm
 from flask_login import UserMixin, LoginManager, login_user, logout_user, current_user
 import os
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import check_password_hash, generate_password_hash
 SECRET_KEY = os.urandom(32) #генерация уникальной последовательности из 32 байто
 
 
@@ -42,14 +43,17 @@ def index():
     if request.method == 'POST': # если пользователь что-то отправил
         if form.validate_on_submit(): #валидация (если форма сказала, что все окей)
             if User.query.filter_by(login=request.form.get('login')).first(): # если пользователь уже занят: почта занята
-                print('ЛОГИН ЕСТЬ')
                 return redirect(url_for('login'))
             else:  # иначе: хэшируем пароль, создать пользователя в бд, авторизация
+                hashed_pass = generate_password_hash(
+                    password = request.form.get('password'),
+                    method = 'pbkdf2:sha256',
+                    salt_length = 8)
                 # определяем нового пользователя
                 new_user = User(
                     login = request.form.get('login').lower() ,
                     name = request.form.get('name').capitalize() ,
-                    password = request.form.get('password')
+                    password = hashed_pass
                 )
                 # заносим запись в бд
                 db.session.add(new_user)
@@ -68,15 +72,18 @@ def home():
 def login():
     form = LoginForm()
     if request.method == 'POST':
-        login = request.form.get('login').lower()
+        login = request.form.get('login')
         password = request.form.get('password')
         user = User.query.filter_by(login=login).first()
         if not user:
             return redirect(url_for('index'))
         # не хватает проверки пароля
-        else:
-            login_user(user)
-            return redirect(url_for('home'))
+        else:  # когда логин есть
+            if check_password_hash(user.password, password):
+                login_user(user)
+                return redirect(url_for('home'))
+            else:
+                print('НЕ')
     return render_template('login.html', form=form)
 
 app.run(debug=True)
