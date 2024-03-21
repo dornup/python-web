@@ -8,14 +8,19 @@
 body {
     background-color: var(--dark_bg);
     margin: 0;
+    overflow-x: hidden;
 }
 
-h1, h2, h3, p {
+h1, h2, h3, p, label, .btn, input {
     color: var(--dark_text);
     font-family: "Comfortaa", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: italic;
+}
+input, .form-control {
+    background-color: var(--dark_text);
+    box-shadow: inset -13px -10px 15px 5px rgba(0,0,0,0.1);
 }
 
 /* Оформление */
@@ -32,12 +37,43 @@ section#welcome {
 }
 
 /* Фоновые логотипы */
+section#welcome .bg_logo {
+    position: absolute;
+    left: 0;
+    top: 50vh;
+    width: 100vw;
+    transform: translateY(-50%);
+    height: 50vh;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(5, 1fr);
+}
 section#welcome .bg_logo img {
         width: 75px;
-        position: absolute;
-        z-index: -1;
-        left: 50px;
+        /* position: absolute;
+        z-index: -1; */
+        /* left: 50px; */
 
         /* Инверсия цветов */
         filter: invert(95%); 
+}
+
+/* Блок регистрации */
+
+section#register .form-group label{
+    font-size: 25px;
+}
+section#register .form-group {
+    margin-bottom: 10px;
+}
+
+section#register .btn {
+    background-color: var(--dark_text);
+    color: var(--dark_bg);
+}
+
+section#register {
+    width: 30vw;
+    margin: auto;
 }
