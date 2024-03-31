@@ -1,7 +1,10 @@
 /* Общие настройки */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
 :root {
     --dark_bg: #434149;
-    --dark_text: #dbd4b6;
+    --dark_primary: #dbd4b6;
+    --dark_second: beige;
 }
 
 
@@ -11,15 +14,20 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, p, label, .btn, input {
-    color: var(--dark_text);
+h1, h2, h3, p, label, .btn, input, a {
+    color: var(--dark_primary);
     font-family: "Comfortaa", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: italic;
 }
+
+a:hover {
+    color: var(--dark_second);
+}
+
 input, .form-control {
-    background-color: var(--dark_text);
+    background-color: var(--dark_primary);
     box-shadow: inset -13px -10px 15px 5px rgba(0,0,0,0.1);
 }
 
@@ -61,19 +69,36 @@ section#welcome .bg_logo img {
 
 /* Блок регистрации */
 
-section#register .form-group label{
+section#register h1, section#login h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+section#register .form-group label, section#login .form-group label{
     font-size: 25px;
 }
-section#register .form-group {
+section#register .form-group, section#login .form-group{
     margin-bottom: 10px;
 }
 
-section#register .btn {
-    background-color: var(--dark_text);
+section#register .btn, section#login .btn {
+    background-color: var(--dark_primary);
     color: var(--dark_bg);
+    margin-top: 15px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+
 }
 
-section#register {
+section#register, section#login {
     width: 30vw;
-    margin: auto;
+    margin: 0px auto 100px;
+}
+
+section#register a {
+    display: inline-block  ;
+    margin-top: 10px;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }

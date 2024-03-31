@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_bootstrap import Bootstrap
 from forms import RegisterForm, LoginForm
-from flask_login import UserMixin, LoginManager, login_user, logout_user, current_user
+from flask_login import UserMixin, LoginManager, login_user, logout_user, current_user, login_required
 import os
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -64,10 +64,6 @@ def index():
 
     return render_template('index.html', form=form)
 
-@app.route("/home")
-def home():
-    return render_template('page.html')
-
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -85,5 +81,10 @@ def login():
             else:
                 print('НЕ')
     return render_template('login.html', form=form)
+
+@app.route("/home")
+@login_required
+def home():
+    return render_template('page.html')
 
 app.run(debug=True)

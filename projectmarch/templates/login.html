@@ -2,5 +2,7 @@
 
 {% import 'bootstrap/wtf.html' as wtf %}
 <section id="login">
+    <h1>Войти в аккаунт:</h1>
     {{wtf.quick_form(form) }}
+    <a href={{ url_for('index' ) }}>Создать аккаунт</a>
 </section>
