@@ -1,4 +1,7 @@
-{% include 'header.html'   %}
+{% include 'header.html' %}
+{% block head %}
+    <link rel="stylesheet" href={{ url_for('static', filename="css/login.css" ) }}>
+{% endblock head %}
 
 {% import 'bootstrap/wtf.html' as wtf %}
 <section id="login">
@@ -6,3 +9,7 @@
     {{wtf.quick_form(form) }}
     <a href={{ url_for('index' ) }}>Создать аккаунт</a>
 </section>
+
+<div id="hover"></div>
+<div id="left_hand"class='hand'></div>
+<div id="right_hand"class='hand'></div>

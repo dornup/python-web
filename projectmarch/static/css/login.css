@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+section#login {
+    margin: 0;
+}
+
+div.hand {
+    position: absolute;
+    width: 45vw;
+    height: 50vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 50vh;
+}
+
+div#left_hand {
+    background-image: url('../img/left_hand.png');
+    left: 0;
+    background-position: left;
+}
+
+div#right_hand {
+    background-image: url('../img/right_hand.png');
+    right: 0;
+    background-position: right;
+}
+
+div#hover {
+    position: absolute;
+    width: 30vh;
+    height: 25vh;
+}

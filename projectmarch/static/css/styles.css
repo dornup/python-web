@@ -96,7 +96,7 @@ section#register, section#login {
     margin: 0px auto 100px;
 }
 
-section#register a {
+section#register a, section#login a {
     display: inline-block  ;
     margin-top: 10px;
     margin-left: 50%;
