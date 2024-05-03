@@ -31,8 +31,25 @@ div#right_hand {
     background-position: right;
 }
 
+div#right_hand .move {
+
+}
+div#left_hand.move {
+    animation: move2left 2s ease-in-out forwards;
+}
+
 div#hover {
     position: absolute;
-    width: 30vh;
-    height: 25vh;
+    width: 55vh;
+    height: 35vh;
+    z-index: 2;
+}
+
+@keyframes move2left {
+    0% {
+        left:0;
+    }
+    100% {
+        left:-5vw;
+    }
 }

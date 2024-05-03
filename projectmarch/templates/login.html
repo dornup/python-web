@@ -1,15 +1,22 @@
-{% include 'header.html' %}
+{% extends 'base.html' %}
 {% block head %}
     <link rel="stylesheet" href={{ url_for('static', filename="css/login.css" ) }}>
+    <title>Вход</title>
 {% endblock head %}
 
-{% import 'bootstrap/wtf.html' as wtf %}
-<section id="login">
-    <h1>Войти в аккаунт:</h1>
-    {{wtf.quick_form(form) }}
-    <a href={{ url_for('index' ) }}>Создать аккаунт</a>
-</section>
+{% block content %}
+    {% import 'bootstrap/wtf.html' as wtf %}
+    <section id="login">
+        <h1>Войти в аккаунт:</h1>
+        {{wtf.quick_form(form) }}
+        <a href={{ url_for('index' ) }}>Создать аккаунт</a>
+    </section>
 
-<div id="hover"></div>
-<div id="left_hand"class='hand'></div>
-<div id="right_hand"class='hand'></div>
+    <div id="hover"></div>
+    <div id="left_hand"class='hand move'></div>
+    <div id="right_hand"class='hand'></div>
+{% endblock content %}
+
+{% block footer %}
+    <script src={{ url_for('static', filename="js/animated_hands.js" ) }}></script>
+{% endblock footer%}
