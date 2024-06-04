@@ -85,6 +85,6 @@ def login():
 @app.route("/home")
 @login_required
 def home():
-    return render_template('page.html')
+    return render_template('home.html')
 
 app.run(debug=True)

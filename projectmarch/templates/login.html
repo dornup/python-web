@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends '_base.html' %}
 {% block head %}
     <link rel="stylesheet" href={{ url_for('static', filename="css/login.css" ) }}>
     <title>Вход</title>
@@ -14,7 +14,7 @@
 
     <div id="hover"></div>
     <div id="left_hand"class='hand move'></div>
-    <div id="right_hand"class='hand'></div>
+    <div id="right_hand"class='hand move'></div>
 {% endblock content %}
 
 {% block footer %}

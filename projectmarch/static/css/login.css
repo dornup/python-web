@@ -28,21 +28,23 @@ div#left_hand {
 div#right_hand {
     background-image: url('../img/right_hand.png');
     right: 0;
+    /* transition: right, 1.2s, ease-in-out; */
     background-position: right;
 }
 
-div#right_hand .move {
-
+div#right_hand.move {
+    animation: move2right 1.2s ease-in-out forwards;
 }
+
 div#left_hand.move {
-    animation: move2left 2s ease-in-out forwards;
+    animation: move2left 1.2s ease-in-out forwards;
 }
 
 div#hover {
     position: absolute;
     width: 55vh;
     height: 35vh;
-    z-index: 2;
+    z-index: -1;
 }
 
 @keyframes move2left {
@@ -50,6 +52,15 @@ div#hover {
         left:0;
     }
     100% {
-        left:-5vw;
+        left:-7vw;
+    }
+}
+
+@keyframes move2right {
+    0% {
+        right:0;
+    }
+    100% {
+        right:-7vw;
     }
 }

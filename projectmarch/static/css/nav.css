@@ -1,0 +1,49 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+nav {
+    border-radius: 24px;
+    background: #434149;
+    box-shadow:  16px 16px 32px #35333a,
+             -16px -16px 32px #514f58;
+    /* height: 10vh; */
+    width: 100vw;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 15px
+}
+
+nav li{
+    list-style-type: none;
+    font-size: 30px;
+}
+
+nav a.dropdown-toggle {
+    font-size: 38px;
+    line-height: 20px;
+    
+}
+
+nav .logo {
+    width: 50px;
+    filter: invert();
+}
+
+.meme_click {
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    width: 150px;
+    height: 40px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.apple {
+    background-image: url(../img/meme-click/yablonya1.png);
+    background-size: 140px;
+}
+
+.meme_click:active {
+    box-shadow: 5px 5px 5px rgb(10, 0, 0, 0.3);
+}

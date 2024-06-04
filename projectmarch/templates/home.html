@@ -1,0 +1,37 @@
+{% extends '_base.html' %}
+{% block head %}
+<title>
+  {{ ['ты красивый', 'ты солнышко', 'ты умничка'] | random }}
+</title>
+<link rel="stylesheet" href={{ url_for('static', filename='css/nav.css' ) }}>
+<link rel="stylesheet" href={{ url_for('static', filename='css/home.css') }}>
+{% endblock head %}
+{% block content %}
+<nav <li class="nav-item dropdown">
+  <img class='logo' src={{ url_for('static', filename="img/logo.svg" ) }}>
+
+  <div class="meme_click apple"></div>
+
+  <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="bi bi-person-circle"></i> {#{{ current_user.login }}#}
+  </a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Настройки</a></li>
+    <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
+    <li>
+      <hr class="dropdown-divider">
+    </li>
+    <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Выйти</a></li>
+  </ul>
+  </li>
+</nav>
+
+<main>
+  <h1>Привет, {{ current_user.login }}</h1>
+</main>
+
+{% endblock content%}
+
+{% block footer %}
+  <script src={{ url_for('static', filename='js/home.js') }}></script>
+{% endblock footer %}

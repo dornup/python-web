@@ -1,7 +1,11 @@
 hover = document.querySelector('#hover');
-hover.addEventListener('mouseover', () => {
-    console.log('sssss')
+/* hover.addEventListener('mouseover', () => {
+    document.querySelectorAll('.hand').forEach((lapka)=> {
+        lapka.classList.add('move')
+    })
 })
 hover.addEventListener('mouseleave', () => {
-    console.log('jjjjj')
-})
+    document.querySelectorAll('.hand').forEach((lapka)=> {
+        lapka.classList.remove('move')
+    })
+}) */

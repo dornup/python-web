@@ -14,12 +14,13 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, p, label, .btn, input, a {
+h1, h2, h3, p, label, .btn, input, a, nav li {
     color: var(--dark_primary);
     font-family: "Comfortaa", sans-serif;
-    font-optical-sizing: auto;
+    /* font-optical-sizing: auto; */
     font-weight: 300;
     font-style: italic;
+    text-decoration: none;
 }
 
 a:hover {
@@ -32,6 +33,20 @@ input, .form-control {
 }
 
 /* Оформление */
+
+nav {
+    border-radius: 24px;
+    background: #434149;
+    box-shadow:  16px 16px 32px #35333a,
+             -16px -16px 32px #514f58;
+    height: 10vh;
+    width: 100vw;
+}
+
+nav li{
+    list-style-type: none;
+    font-size: 30px;
+}
 
 section#welcome {
     height: 100vh;
