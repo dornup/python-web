@@ -10,7 +10,7 @@
 <nav <li class="nav-item dropdown">
   <img class='logo' src={{ url_for('static', filename="img/logo.svg" ) }}>
 
-  <div class="meme_click apple"></div>
+  <div class="meme_click apple-tree"></div>
 
   <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <i class="bi bi-person-circle"></i> {#{{ current_user.login }}#}
@@ -25,6 +25,10 @@
   </ul>
   </li>
 </nav>
+
+<div class="falling_items">
+
+</div>
 
 <main>
   <h1>Привет, {{ current_user.login }}</h1>

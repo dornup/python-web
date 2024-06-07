@@ -39,11 +39,26 @@ nav .logo {
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
 }
 
-.apple {
+.apple-tree {
     background-image: url(../img/meme-click/yablonya1.png);
     background-size: 140px;
 }
 
 .meme_click:active {
     box-shadow: 5px 5px 5px rgb(10, 0, 0, 0.3);
+}
+
+.falling_items div {
+    height: 50px;
+    width: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: -25px;
+    
+}
+
+.apple {
+    background-image: url(../img/meme-click/aple.png);
 }
