@@ -37,6 +37,10 @@ class User(UserMixin, db.Model):
 
 db.create_all()    
 
+@app.route('/settings')
+def settings():
+    return render_template('settings.html')
+
 @app.route("/", methods=['GET', 'POST'])
 def index():
     form = RegisterForm()
