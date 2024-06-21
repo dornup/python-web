@@ -1,0 +1,24 @@
+main {
+    display: flex;
+
+}
+
+main section {
+    background-color: red;
+    width: 50%;
+}
+
+main .avatar .mask {
+    border-radius: 40px;
+    overflow: hidden;
+    width: min-content;
+}
+
+main .avatar .img {
+    background-image: url('https://thispersondoesnotexist.com/');
+    height: 400px;
+    width: 400px;
+    background-position: center;
+    background-size: cover;
+}
+

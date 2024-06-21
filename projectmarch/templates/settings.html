@@ -1,9 +1,26 @@
 {% extends '_base.html' %}
 
-{% block head %}
 
+{% block head %}
+<link rel="stylesheet" href={{ url_for('static', filename='css/settings.css' ) }}>
 {% endblock head %}
+
 
 {% block content %}
 
+{% include '_nav.html'   %}
+
+<main>
+    <section class="avatar">
+        <div class="mask">
+            <div class="img"></div>
+        </div>
+        <button>Изменить</button>
+        <button>Изменить</button>
+        <button>Изменить</button>
+    </section>
+    <section class="general">
+        123
+    </section>
+</main>
 {% endblock content %}

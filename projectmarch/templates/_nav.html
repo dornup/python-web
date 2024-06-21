@@ -1,0 +1,24 @@
+<link rel="stylesheet" href={{ url_for('static', filename='css/nav.css' ) }}>
+
+<nav <li class="nav-item dropdown">
+    <img class='logo' src={{ url_for('static', filename="img/logo.svg" ) }}>
+  
+    <div class="meme_click apple-tree"></div>
+  
+    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-person-circle"></i> {#{{ current_user.login }}#}
+    </a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href={{ url_for('settings' ) }}><i class="bi bi-gear"></i> Настройки</a></li>
+      <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i> Выйти</a></li>
+    </ul>
+    </li>
+  </nav>
+
+  <div class="falling_items"></div>
+
+  <script src={{ url_for('static', filename='js/falling_items.js') }}></script>
