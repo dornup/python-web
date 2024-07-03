@@ -33,7 +33,7 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     login = db.Column(db.String(250), unique=True, nullable=False)
     name = db.Column(db.String(250), unique=False, nullable=False)
-    password = db.Column(db.String(250), nullable=False)
+    password = db.Column(db.String(250), nullable=False) 
 
 db.create_all()    
 

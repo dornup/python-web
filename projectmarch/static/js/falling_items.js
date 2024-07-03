@@ -9,28 +9,43 @@ document.addEventListener('DOMContentLoaded', () => { // когда страни
     meme_click.addEventListener('click', () => {
         shelest_tree.play();
 
-        let div = document.createElement('div');
-        div.classList.add('apple');
-        div.style.left = `${Math.floor(Math.random() * 98)}vw`;
-        falling_items.appendChild(div);
+        let falling_object = document.createElement('div');
+        falling_object.classList.add('apple');
+        falling_object.style.left = `${Math.floor(Math.random() * 98)}vw`;
+        falling_items.appendChild(falling_object);
+        
+        // само падение
+        function getHeight() {
+            return Math.max(
+                document.body.scrollHeight, // высота содержимого body, включая прокрутку
+                document.documentElement.scrollHeight, // высота финальной странички
+                document.body.offsetHeight, // высота body, включая border и padding
+                document.documentElement.offsetHeight, // высота document, включая border и padding
+                document.body.clientHeight, // высота видимой части border, включая padding, исключая border
+                document.documentElement.clientHeight, // высот
+            )
+        }
 
-        // падение
-        startTime = null;
-        function fall(timestamp) {
-            if (!startTime) startTime = timestamp // инициализация времен начала анимации
-            
-            let progress = timestamp - startTime; // прошедшее время с начала анимации
-            let position = Math.min(progress / 10, totalH); // текущая позиция
+        let currentTop = 0;
+        let speed = 5; // скорость падения в px
+       
+        function fall() {
+                const pageHeight = getHeight(); //получаем высоту страницы
+                const appleHeight = falling_object.offsetHeight; // высота падающего элемента
+                const targetTop = pageHeight - appleHeight; // сколько падать (чтобы не выпасть)
 
-            div.style.top = `${position}px`
-
-            if (position < totalH) {
-
-                requestAnimationFrame(fall)
-            }
-        };
-
-        requestAnimationFrame(fall);
+                if (currentTop < targetTop) {
+                    currentTop += speed;
+                    if (currentTop > targetTop) currentTop = targetTop;
+                    falling_object.style.top = currentTop + 'px';
+                    requestAnimationFrame(fall);
+                };  
+        }
+        requestAnimationFrame(fall); // запускаем анимацию
+        /*
+        1. Планирование перерисовки на следующих циклах перериисовки -> браузер пытается синхронизировать смену кадров и анимацию
+        2. Более простая остановка анимации -> просто прекратили вызовы request 
+         */
     });
     
 });

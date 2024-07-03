@@ -16,11 +16,14 @@
             <div class="img"></div>
         </div>
         <button>Изменить</button>
-        <button>Изменить</button>
-        <button>Изменить</button>
+        <button>Удалить</button>
+        <input type="range" id="ava_round" min="5" max="50" value="5">
     </section>
     <section class="general">
         123
     </section>
 </main>
 {% endblock content %}
+{% block footer %}
+<script src= {{ url_for('static', filename='/js/settings.js') }}></script>
+{% endblock footer %}

@@ -9,7 +9,7 @@ main section {
 }
 
 main .avatar .mask {
-    border-radius: 40px;
+    border-radius: 5%;
     overflow: hidden;
     width: min-content;
 }
